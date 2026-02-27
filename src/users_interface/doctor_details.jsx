@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 export default function DoctorDetails() {
   const doctor = {
     name: "Dr. Arjun Nair",
@@ -26,15 +25,13 @@ export default function DoctorDetails() {
 
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
+  const [paymentMethod, setPaymentMethod] = useState(null);
 
   return (
     <div className="bg-sky-50 min-h-screen flex flex-col">
-
       <div className="max-w-7xl mx-auto px-6 py-10 grid lg:grid-cols-3 gap-8">
-
         {/* LEFT SIDE */}
         <div className="lg:col-span-2 space-y-6">
-
           {/* Doctor Profile */}
           <div className="bg-white rounded-2xl shadow-sm p-6 md:flex gap-6 items-center">
             <img
@@ -48,13 +45,9 @@ export default function DoctorDetails() {
                 {doctor.name}
               </h2>
 
-              <p className="text-sky-600 font-medium">
-                {doctor.speciality}
-              </p>
+              <p className="text-sky-600 font-medium">{doctor.speciality}</p>
 
-              <p className="text-gray-500 mt-1">
-                {doctor.qualification}
-              </p>
+              <p className="text-gray-500 mt-1">{doctor.qualification}</p>
 
               <div className="flex flex-wrap gap-4 mt-3 text-sm text-gray-600">
                 <span className="flex items-center gap-2">
@@ -80,9 +73,7 @@ export default function DoctorDetails() {
             <h3 className="font-semibold text-lg mb-2 text-gray-800">
               About Doctor
             </h3>
-            <p className="text-gray-600 leading-relaxed">
-              {doctor.about}
-            </p>
+            <p className="text-gray-600 leading-relaxed">{doctor.about}</p>
           </div>
 
           {/* Availability */}
@@ -114,9 +105,7 @@ export default function DoctorDetails() {
             {/* Time Slots */}
             {selectedDate && (
               <div className="mt-6">
-                <p className="text-sm text-gray-500 mb-2">
-                  Select Time
-                </p>
+                <p className="text-sm text-gray-500 mb-2">Select Time</p>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   {timeSlots.map((time, i) => (
                     <button
@@ -135,11 +124,48 @@ export default function DoctorDetails() {
               </div>
             )}
           </div>
+
+          {/* Payment Method */}
+          {selectedTime && (
+            <div className="bg-white rounded-xl shadow-sm p-6">
+              <h3 className="font-semibold text-lg text-gray-800 mb-4">
+                Payment Method
+              </h3>
+              <div className="space-y-3">
+                <button
+                  onClick={() => setPaymentMethod("book_now")}
+                  className={`w-full p-4 rounded-lg border-2 transition text-left ${
+                    paymentMethod === "book_now"
+                      ? "bg-sky-50 border-sky-500"
+                      : "border-gray-300 hover:border-sky-300"
+                  }`}
+                >
+                  <p className="font-semibold text-gray-800">Book Now</p>
+                  <p className="text-sm text-gray-600">
+                    Pay now to confirm booking
+                  </p>
+                </button>
+
+                <button
+                  onClick={() => setPaymentMethod("pay_hospital")}
+                  className={`w-full p-4 rounded-lg border-2 transition text-left ${
+                    paymentMethod === "pay_hospital"
+                      ? "bg-sky-50 border-sky-500"
+                      : "border-gray-300 hover:border-sky-300"
+                  }`}
+                >
+                  <p className="font-semibold text-gray-800">Pay at Hospital</p>
+                  <p className="text-sm text-gray-600">
+                    Pay during consultation visit
+                  </p>
+                </button>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* RIGHT SIDE BOOKING PANEL */}
         <div className="bg-white rounded-2xl shadow-sm p-6 h-fit sticky top-24">
-
           <h3 className="font-semibold text-lg text-gray-800">
             Book Appointment
           </h3>
@@ -147,35 +173,44 @@ export default function DoctorDetails() {
           <div className="mt-4 text-sm text-gray-600 space-y-2">
             <p className="flex justify-between">
               <span>Consultation Fee</span>
-              <span className="font-semibold text-gray-800">
-                ₹{doctor.fee}
-              </span>
+              <span className="font-semibold text-gray-800">₹{doctor.fee}</span>
             </p>
 
             <p className="flex justify-between">
               <span>Selected Date</span>
-              <span className="font-medium">
-                {selectedDate || "--"}
-              </span>
+              <span className="font-medium">{selectedDate || "--"}</span>
             </p>
 
             <p className="flex justify-between">
               <span>Selected Time</span>
+              <span className="font-medium">{selectedTime || "--"}</span>
+            </p>
+
+            <p className="flex justify-between">
+              <span>Payment Method</span>
               <span className="font-medium">
-                {selectedTime || "--"}
+                {paymentMethod === "book_now"
+                  ? "Book Now"
+                  : paymentMethod === "pay_hospital"
+                    ? "Pay at Hospital"
+                    : "--"}
               </span>
             </p>
           </div>
 
           <button
-            disabled={!selectedTime}
+            disabled={!paymentMethod}
             className={`mt-6 w-full py-3 rounded-lg text-white font-medium transition ${
-              selectedTime
-                ? "bg-sky-500 hover:bg-sky-600"
+              paymentMethod
+                ? paymentMethod === "book_now"
+                  ? "bg-sky-500 hover:bg-sky-600"
+                  : "bg-green-500 hover:bg-green-600"
                 : "bg-gray-300 cursor-not-allowed"
             }`}
           >
-            Book Consultation
+            {paymentMethod === "book_now"
+              ? "Proceed to Payment"
+              : "Confirm Booking"}
           </button>
 
           <p className="text-xs text-gray-400 mt-3 text-center">
@@ -183,7 +218,6 @@ export default function DoctorDetails() {
           </p>
         </div>
       </div>
-
     </div>
   );
 }

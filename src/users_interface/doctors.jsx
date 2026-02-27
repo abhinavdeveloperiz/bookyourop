@@ -142,7 +142,7 @@ export default function Doctors() {
 
               <Link to={`/doctordetails`}>
                 <button className="mt-4 px-5 py-2 text-sm font-medium text-sky-600 border border-sky-500 rounded-full hover:bg-sky-500 hover:text-white transition">
-                  View Profile
+                  Book Now
                 </button>
               </Link>
             </div>

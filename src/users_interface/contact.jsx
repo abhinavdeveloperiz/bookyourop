@@ -17,14 +17,13 @@ Phone: ${form.phone}
 Message: ${form.message}`;
     window.open(
       `https://wa.me/919999999999?text=${encodeURIComponent(text)}`,
-      "_blank"
+      "_blank",
     );
   };
 
   return (
     <div className="bg-sky-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-6 py-10">
-
         {/* HEADER */}
         <div className="bg-white rounded-2xl shadow-sm p-6 mb-8">
           <h1 className="text-3xl font-semibold text-gray-800">Contact Us</h1>
@@ -34,8 +33,7 @@ Message: ${form.message}`;
         </div>
 
         {/* CONTACT INFO CARDS */}
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
-
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white p-6 rounded-2xl shadow-sm text-center">
             <i className="fa-solid fa-phone text-sky-500 text-2xl mb-3"></i>
             <h3 className="font-semibold text-gray-700">Call Us</h3>
@@ -45,24 +43,18 @@ Message: ${form.message}`;
           <div className="bg-white p-6 rounded-2xl shadow-sm text-center">
             <i className="fa-solid fa-envelope text-sky-500 text-2xl mb-3"></i>
             <h3 className="font-semibold text-gray-700">Email</h3>
-            <p className="text-gray-500 text-sm mt-1">
-              support@doctorcare.com
-            </p>
+            <p className="text-gray-500 text-sm mt-1">support@doctorcare.com</p>
           </div>
 
           <div className="bg-white p-6 rounded-2xl shadow-sm text-center">
             <i className="fa-solid fa-location-dot text-sky-500 text-2xl mb-3"></i>
             <h3 className="font-semibold text-gray-700">Location</h3>
-            <p className="text-gray-500 text-sm mt-1">
-              Kochi, Kerala, India
-            </p>
+            <p className="text-gray-500 text-sm mt-1">Kochi, Kerala, India</p>
           </div>
-
         </div>
 
         {/* CONTACT FORM + MAP */}
         <div className="grid md:grid-cols-2 gap-8">
-
           {/* FORM */}
           <div className="bg-white rounded-2xl shadow-sm p-6">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">
@@ -115,7 +107,6 @@ Message: ${form.message}`;
               loading="lazy"
             ></iframe>
           </div>
-
         </div>
 
         {/* WHATSAPP QUICK BUTTON */}
@@ -129,7 +120,6 @@ Message: ${form.message}`;
             <i className="fa-brands fa-whatsapp text-2xl"></i>
           </a>
         </div>
-
       </div>
     </div>
   );

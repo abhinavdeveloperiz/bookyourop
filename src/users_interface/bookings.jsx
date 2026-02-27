@@ -54,26 +54,27 @@ export default function Bookings() {
   };
 
   return (
-    <div className="bg-sky-50 min-h-screen flex flex-col">
-      <div className="max-w-7xl mx-auto px-6 py-10">
+    <div className="bg-sky-50 min-h-screen">
+      <div className="max-w-3xl mx-auto px-4 pb-24">
         {/* HEADER */}
-        <div className="bg-white rounded-2xl shadow-sm p-6 mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div>
-            <h1 className="text-3xl font-semibold text-gray-800">
-              My Appointments
-            </h1>
-            <p className="text-gray-500 text-sm mt-1">
-              Manage and track your consultations
-            </p>
-          </div>
+        <div className="pt-6 pb-4">
+          <h1 className="text-2xl font-semibold text-gray-800">
+            My Appointments
+          </h1>
+          <p className="text-gray-500 text-sm">
+            Track and manage your consultations
+          </p>
+        </div>
 
-          <div className="flex gap-3">
+        {/* STICKY TABS (Mobile UX boost) */}
+        <div className="sticky top-0 z-10 bg-sky-50 pb-4">
+          <div className="flex bg-white p-1 rounded-full shadow-sm">
             <button
               onClick={() => setActiveTab("upcoming")}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition ${
+              className={`flex-1 py-2 rounded-full text-sm font-medium transition ${
                 activeTab === "upcoming"
-                  ? "bg-sky-500 text-white shadow"
-                  : "bg-sky-50 text-gray-600 hover:bg-sky-100"
+                  ? "bg-sky-500 text-white"
+                  : "text-gray-600"
               }`}
             >
               Upcoming
@@ -81,10 +82,8 @@ export default function Bookings() {
 
             <button
               onClick={() => setActiveTab("past")}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition ${
-                activeTab === "past"
-                  ? "bg-sky-500 text-white shadow"
-                  : "bg-sky-50 text-gray-600 hover:bg-sky-100"
+              className={`flex-1 py-2 rounded-full text-sm font-medium transition ${
+                activeTab === "past" ? "bg-sky-500 text-white" : "text-gray-600"
               }`}
             >
               History
@@ -92,64 +91,56 @@ export default function Bookings() {
           </div>
         </div>
 
-        {/* BOOKINGS LIST */}
-        <div className="space-y-6">
+        {/* LIST */}
+        <div className="space-y-4">
           {filteredBookings.map((b) => (
             <div
               key={b.id}
-              className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-5 md:p-6"
+              className="bg-white rounded-2xl shadow-sm p-4 active:scale-[0.99] transition"
             >
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-5">
-                {/* DOCTOR INFO */}
-                <div className="flex items-center gap-4">
-                  <img
-                    src={b.image}
-                    alt={b.doctor}
-                    className="w-16 h-16 rounded-full object-cover"
-                  />
+              {/* Doctor */}
+              <div className="flex items-center gap-4">
+                <img
+                  src={b.image}
+                  alt={b.doctor}
+                  className="w-14 h-14 rounded-full object-cover"
+                />
 
-                  <div>
-                    <h3 className="font-semibold text-gray-800 text-lg">
-                      {b.doctor}
-                    </h3>
-                    <p className="text-sky-600 text-sm">{b.speciality}</p>
-                    <p className="text-gray-500 text-sm">{b.hospital}</p>
-                  </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-gray-800">{b.doctor}</h3>
+                  <p className="text-sky-600 text-sm">{b.speciality}</p>
+                  <p className="text-gray-500 text-xs">{b.hospital}</p>
                 </div>
 
-                {/* DATE & TIME */}
-                <div className="flex items-center gap-6 text-sm text-gray-600">
-                  <div className="flex items-center gap-2">
-                    <i className="fa-regular fa-calendar text-sky-500"></i>
-                    {b.date}
-                  </div>
+                <span
+                  className={`px-3 py-1 text-xs rounded-full font-medium flex items-center gap-1 ${statusStyles(
+                    b.status,
+                  )}`}
+                >
+                  <i className={`fa-solid ${statusIcon(b.status)}`}></i>
+                  {b.status}
+                </span>
+              </div>
 
-                  <div className="flex items-center gap-2">
-                    <i className="fa-regular fa-clock text-sky-500"></i>
-                    {b.time}
-                  </div>
+              {/* Date & Time */}
+              <div className="flex gap-3 mt-4 text-sm">
+                <div className="flex items-center gap-2 bg-sky-50 px-3 py-1 rounded-full text-gray-600">
+                  <i className="fa-regular fa-calendar text-sky-500"></i>
+                  {b.date}
                 </div>
 
-                {/* STATUS & ACTIONS */}
-                <div className="flex flex-col items-start md:items-end gap-3">
-                  <span
-                    className={`flex items-center gap-2 px-3 py-1 text-xs rounded-full font-medium ${statusStyles(
-                      b.status,
-                    )}`}
-                  >
-                    <i className={`fa-solid ${statusIcon(b.status)}`}></i>
-                    {b.status}
-                  </span>
-
-                  {b.status === "upcoming" && (
-                    <div className="flex gap-2">
-                      <button className="px-4 py-1 text-sm rounded-full border text-red-500 hover:bg-red-50">
-                        Cancel
-                      </button>
-                    </div>
-                  )}
+                <div className="flex items-center gap-2 bg-sky-50 px-3 py-1 rounded-full text-gray-600">
+                  <i className="fa-regular fa-clock text-sky-500"></i>
+                  {b.time}
                 </div>
               </div>
+
+              {/* Actions */}
+              {b.status === "upcoming" && (
+                <button className="mt-4 w-full py-2 rounded-full border border-red-400 text-red-500 font-medium hover:bg-red-50 transition">
+                  Cancel Appointment
+                </button>
+              )}
             </div>
           ))}
         </div>
@@ -157,8 +148,8 @@ export default function Bookings() {
         {/* EMPTY STATE */}
         {filteredBookings.length === 0 && (
           <div className="bg-white rounded-2xl shadow-sm p-10 text-center mt-10">
-            <i className="fa-regular fa-calendar-xmark text-5xl text-sky-300 mb-4"></i>
-            <p className="text-gray-500 text-lg">No appointments found</p>
+            <i className="fa-regular fa-calendar-xmark text-4xl text-sky-300 mb-3"></i>
+            <p className="text-gray-500">No appointments found</p>
           </div>
         )}
       </div>
