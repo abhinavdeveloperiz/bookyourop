@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-
 export default function Doctors() {
   const doctorsData = [
     {
@@ -61,22 +60,17 @@ export default function Doctors() {
   const [search, setSearch] = useState("");
   const [active, setActive] = useState("All");
 
-  const filteredDoctors = doctorsData.filter(doc => {
-    const matchesSearch = doc.name
-      .toLowerCase()
-      .includes(search.toLowerCase());
+  const filteredDoctors = doctorsData.filter((doc) => {
+    const matchesSearch = doc.name.toLowerCase().includes(search.toLowerCase());
 
-    const matchesSpeciality =
-      active === "All" || doc.speciality === active;
+    const matchesSpeciality = active === "All" || doc.speciality === active;
 
     return matchesSearch && matchesSpeciality;
   });
 
   return (
     <div className="bg-sky-50 min-h-screen flex flex-col">
-
       <div className="max-w-7xl mx-auto px-6 py-10">
-
         {/* Page Title */}
         <h1 className="text-3xl font-semibold text-gray-800 mb-6">
           Find Doctors
@@ -91,7 +85,7 @@ export default function Doctors() {
               placeholder="Search doctor by name..."
               className="w-full outline-none"
               value={search}
-              onChange={e => setSearch(e.target.value)}
+              onChange={(e) => setSearch(e.target.value)}
             />
           </div>
         </div>
@@ -114,11 +108,11 @@ export default function Doctors() {
         </div>
 
         {/* Doctors Grid */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {filteredDoctors.map(doc => (
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          {filteredDoctors.map((doc) => (
             <div
               key={doc.id}
-              className="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-lg transition"
+              className=" rounded-2xl p-6 text-center transition"
             >
               <img
                 src={doc.image}
@@ -130,15 +124,9 @@ export default function Doctors() {
                 {doc.name}
               </h3>
 
-              <p className="text-sky-600 text-sm">
-                {doc.speciality}
-              </p>
+              <p className="text-sky-600 text-sm">{doc.speciality}</p>
 
-              <p className="text-gray-500 text-sm mt-1">
-                {doc.experience}
-              </p>
-
-             
+              <p className="text-gray-500 text-sm mt-1">{doc.experience}</p>
 
               <Link to={`/doctordetails`}>
                 <button className="mt-4 px-5 py-2 text-sm font-medium text-sky-600 border border-sky-500 rounded-full hover:bg-sky-500 hover:text-white transition">
@@ -150,13 +138,9 @@ export default function Doctors() {
         </div>
 
         {filteredDoctors.length === 0 && (
-          <p className="text-center text-gray-500 mt-10">
-            No doctors found.
-          </p>
+          <p className="text-center text-gray-500 mt-10">No doctors found.</p>
         )}
-
       </div>
-
     </div>
   );
 }

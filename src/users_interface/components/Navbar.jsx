@@ -13,7 +13,7 @@ export default function Navbar() {
   ];
 
   return (
-    <>
+    <section>
       {/* NAVBAR */}
       <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-md shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
@@ -110,6 +110,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-    </>
+    </section>
   );
 }

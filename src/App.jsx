@@ -9,6 +9,7 @@ import Contact from "./users_interface/contact";
 import ScrollToTop from "./users_interface/components/ScrollToTop";
 import Footer from "./users_interface/components/Footer";
 import Navbar from "./users_interface/components/Navbar";
+import UserProfile from "./users_interface/userprofile";
 
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/doctordetails" element={<DoctorDetails />} />
         <Route path="/bookings" element={<Bookings />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/profile" element={<UserProfile />} />
       </Routes>
       
       <Footer />
