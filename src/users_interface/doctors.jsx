@@ -5,101 +5,87 @@ export default function Doctors() {
   const doctorsData = [
     {
       id: 1,
-      name: "Dr. Arjun Nair",
-      speciality: "Cardiology",
-      experience: "12 Years",
+      name: "Dr. Ajith Kumar",
+      speciality: "General Physician",
+      hospital: "City Care Hospital, Ottappalam",
+      tokens: "0/130",
+      time: "9:30 AM",
       image: "https://randomuser.me/api/portraits/men/32.jpg",
     },
     {
       id: 2,
-      name: "Dr. Meera Das",
-      speciality: "Dermatology",
-      experience: "8 Years",
+      name: "Dr. Anita Menon",
+      speciality: "Pediatrician",
+      hospital: "Sunrise Medical Center, Shoranur",
+      tokens: "10/25",
+      time: "10:00 AM",
       image: "https://randomuser.me/api/portraits/women/44.jpg",
     },
     {
       id: 3,
-      name: "Dr. Rahul Kumar",
-      speciality: "Pediatrics",
-      experience: "10 Years",
+      name: "Dr. Rahul Shinde",
+      speciality: "Dentist",
+      hospital: "Malabar Health Clinic, Perinthalmanna",
+      tokens: "9/125",
+      time: "9:15 AM",
       image: "https://randomuser.me/api/portraits/men/45.jpg",
-    },
-    {
-      id: 4,
-      name: "Dr. Suresh Pillai",
-      speciality: "Orthopedics",
-      experience: "15 Years",
-      image: "https://randomuser.me/api/portraits/men/52.jpg",
-    },
-    {
-      id: 5,
-      name: "Dr. Anitha Menon",
-      speciality: "Gynecology",
-      experience: "9 Years",
-      image: "https://randomuser.me/api/portraits/women/65.jpg",
-    },
-    {
-      id: 6,
-      name: "Dr. Joseph Mathew",
-      speciality: "ENT",
-      experience: "11 Years",
-      image: "https://randomuser.me/api/portraits/men/67.jpg",
     },
   ];
 
-  const specialities = [
-    "All",
-    "Cardiology",
-    "Dermatology",
-    "Pediatrics",
-    "Orthopedics",
-    "Gynecology",
-    "ENT",
-  ];
+  const specialities = ["All", "General Physician", "Pediatrician", "Dentist"];
 
   const [search, setSearch] = useState("");
   const [active, setActive] = useState("All");
 
   const filteredDoctors = doctorsData.filter((doc) => {
-    const matchesSearch = doc.name.toLowerCase().includes(search.toLowerCase());
-
-    const matchesSpeciality = active === "All" || doc.speciality === active;
-
-    return matchesSearch && matchesSpeciality;
+    const matchSearch = doc.name.toLowerCase().includes(search.toLowerCase());
+    const matchSpec = active === "All" || doc.speciality === active;
+    return matchSearch && matchSpec;
   });
 
   return (
-    <div className="bg-sky-50 min-h-screen flex flex-col">
-      <div className="max-w-7xl mx-auto px-6 py-10">
-        {/* Page Title */}
-        <h1 className="text-3xl font-semibold text-gray-800 mb-6">
-          Find Doctors
-        </h1>
+    <div className="bg-slate-100 min-h-screen pb-20">
+      <div className="max-w-5xl mx-auto px-4 py-6">
+        {/* SEARCH */}
+        <div className="bg-white rounded-xl shadow-sm p-3 flex items-center gap-2 mb-4">
+          <i className="fa-solid fa-magnifying-glass text-gray-400"></i>
 
-        {/* Search */}
-        <div className="bg-white rounded-xl shadow-sm p-4 mb-6">
-          <div className="flex items-center gap-3">
-            <i className="fa-solid fa-magnifying-glass text-gray-400"></i>
-            <input
-              type="text"
-              placeholder="Search doctor by name..."
-              className="w-full outline-none"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </div>
+          <input
+            type="text"
+            placeholder="Search hospital or doctor"
+            className="flex-1 outline-none text-sm"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+
+          <i className="fa-solid fa-filter text-sky-500"></i>
         </div>
 
-        {/* Speciality Filter */}
-        <div className="flex flex-wrap gap-3 mb-8">
+        {/* MORNING / EVENING */}
+        <div className="flex gap-2 mb-4">
+          <button className="bg-sky-500 text-white text-xs px-4 py-2 rounded-full">
+            Morning
+          </button>
+
+          <button className="bg-gray-200 text-gray-700 text-xs px-4 py-2 rounded-full">
+            Evening
+          </button>
+
+          <button className="bg-gray-200 text-gray-700 text-xs px-4 py-2 rounded-full">
+            Sort By
+          </button>
+        </div>
+
+        {/* SPECIALITY FILTER */}
+        <div className="flex gap-2 overflow-x-auto pb-2 mb-4">
           {specialities.map((item, i) => (
             <button
               key={i}
               onClick={() => setActive(item)}
-              className={`px-4 py-2 rounded-full border transition ${
+              className={`text-xs px-4 py-2 rounded-full whitespace-nowrap ${
                 active === item
-                  ? "bg-sky-500 text-white border-sky-500"
-                  : "bg-white text-gray-600 border-gray-300 hover:bg-sky-50"
+                  ? "bg-sky-500 text-white"
+                  : "bg-white text-gray-600 border"
               }`}
             >
               {item}
@@ -107,39 +93,55 @@ export default function Doctors() {
           ))}
         </div>
 
-        {/* Doctors Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+        <h2 className="text-sm font-semibold text-gray-700 mb-3">
+          Nearby Hospitals
+        </h2>
+
+        {/* DOCTOR LIST */}
+        <div className="space-y-3">
           {filteredDoctors.map((doc) => (
             <div
               key={doc.id}
-              className=" rounded-2xl p-6 text-center transition"
+              className="bg-white rounded-xl shadow-sm p-3 flex gap-3"
             >
+              {/* Doctor Image */}
               <img
                 src={doc.image}
-                alt={doc.name}
-                className="w-28 h-28 rounded-full object-cover mx-auto"
+                className="w-16 h-16 rounded-lg object-cover"
               />
 
-              <h3 className="mt-4 font-semibold text-gray-800 text-lg">
-                {doc.name}
-              </h3>
+              {/* Info */}
+              <div className="flex-1">
+                <h3 className="text-sm font-semibold text-gray-800">
+                  {doc.name}
+                </h3>
 
-              <p className="text-sky-600 text-sm">{doc.speciality}</p>
+                <p className="text-xs text-gray-500">{doc.speciality}</p>
 
-              <p className="text-gray-500 text-sm mt-1">{doc.experience}</p>
+                <p className="text-xs text-sky-600 mt-1">{doc.hospital}</p>
 
-              <Link to={`/doctordetails`}>
-                <button className="mt-4 px-5 py-2 text-sm font-medium text-sky-600 border border-sky-500 rounded-full hover:bg-sky-500 hover:text-white transition">
-                  Book Now
-                </button>
-              </Link>
+                {/* Tokens + Time */}
+                <div className="flex items-center justify-between mt-2">
+                  <div className="flex gap-3 text-xs text-gray-600">
+                    <span className="bg-slate-100 px-2 py-1 rounded">
+                      🎫 {doc.tokens}
+                    </span>
+
+                    <span className="bg-slate-100 px-2 py-1 rounded">
+                      Morning: {doc.time}
+                    </span>
+                  </div>
+
+                  <Link to="/doctordetails">
+                    <button className="bg-green-500 hover:bg-green-600 text-white text-xs px-3 py-1.5 rounded-lg">
+                      Book Appointment
+                    </button>
+                  </Link>
+                </div>
+              </div>
             </div>
           ))}
         </div>
-
-        {filteredDoctors.length === 0 && (
-          <p className="text-center text-gray-500 mt-10">No doctors found.</p>
-        )}
       </div>
     </div>
   );
