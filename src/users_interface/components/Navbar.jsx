@@ -1,9 +1,14 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
 
 export default function Navbar() {
+
   const location = useLocation();
+  const navigate = useNavigate();
 
   const navLinks = [
+
+ 
     {
       name: "Home",
       path: "/",
@@ -144,14 +149,37 @@ export default function Navbar() {
       </nav>
 
       {/* ── MOBILE TOP BAR (logo only) ── */}
-      <header className="md:hidden sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm flex items-center justify-center px-4 py-3">
-        <Link to="/" className="flex items-center gap-2">
+      {/* ── MOBILE TOP BAR ── */}
+      <header className="md:hidden sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm flex items-center justify-between px-4 py-3">
+        {/* Back Button */}
+        <button
+          onClick={() => navigate(-1)}
+          className="p-2 rounded-full hover:bg-gray-100"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-6 h-6 text-gray-700"
+          >
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+
+        {/* Logo */}
+        <Link to="/" className="flex items-center">
           <img
             src="https://static.vecteezy.com/system/resources/thumbnails/023/654/784/small_2x/golden-logo-template-free-png.png"
             alt="logo"
-            className="h-16"
+            className="h-12"
           />
         </Link>
+
+        {/* Spacer (keeps logo centered) */}
+        <div className="w-8"></div>
       </header>
 
       {/* ── MOBILE BOTTOM NAV ── */}

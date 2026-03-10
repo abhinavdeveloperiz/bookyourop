@@ -1,6 +1,6 @@
 export default function Login() {
   return (
-    <div className="min-h-screen flex flex-col bg-sky-50">
+    <div className="py-34 flex flex-col bg-sky-50">
       {/* Center Section */}
       <div className="flex flex-1 items-center justify-center px-4">
         <div className="w-full max-w-md bg-white border border-sky-500 rounded-xl p-8">

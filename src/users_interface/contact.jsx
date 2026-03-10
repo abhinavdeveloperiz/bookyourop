@@ -25,7 +25,7 @@ Message: ${form.message}`;
     <div className="bg-sky-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-6 py-10">
         {/* HEADER */}
-        <div className="bg-white rounded-2xl shadow-sm p-6 mb-8">
+        <div className="bg-white rounded-3xl shadow-sm p-6 mb-8">
           <h1 className="text-3xl font-semibold text-gray-800">Contact Us</h1>
           <p className="text-gray-500 text-sm mt-1">
             We're here to help with your consultations & bookings
