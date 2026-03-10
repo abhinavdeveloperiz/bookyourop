@@ -1,7 +1,6 @@
 export default function FloatingContact() {
   return (
-    <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
-
+    <div className="fixed bottom-34 right-6 flex flex-col gap-3 z-50">
       {/* CALL BUTTON */}
       <a
         href="tel:+919999999999"
@@ -19,7 +18,6 @@ export default function FloatingContact() {
       >
         <i className="fab fa-whatsapp text-2xl"></i>
       </a>
-
     </div>
   );
 }

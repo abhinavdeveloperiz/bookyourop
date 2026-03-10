@@ -148,7 +148,6 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* ── MOBILE TOP BAR (logo only) ── */}
       {/* ── MOBILE TOP BAR ── */}
       <header className="md:hidden sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm flex items-center justify-between px-4 py-3">
         {/* Back Button */}
@@ -178,7 +177,6 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Spacer (keeps logo centered) */}
         <div className="w-8"></div>
       </header>
 

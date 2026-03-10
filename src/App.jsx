@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./users_interface/login";
 import Home from "./users_interface/home";
 import DoctorDetails from "./users_interface/doctor_details";
-import FlotingButton from "./users_interface/components/FloatingContact"
+// import FlotingButton from "./users_interface/components/FloatingContact"
 import Doctors from "./users_interface/doctors";
 import Bookings from "./users_interface/bookings";
 import Contact from "./users_interface/contact";
@@ -11,14 +11,13 @@ import Footer from "./users_interface/components/Footer";
 import Navbar from "./users_interface/components/Navbar";
 import UserProfile from "./users_interface/userprofile";
 
-
 export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <FlotingButton />
+      {/* <FlotingButton /> */}
       <Navbar />
-      
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -28,7 +27,7 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<UserProfile />} />
       </Routes>
-      
+
       <Footer />
     </BrowserRouter>
   );

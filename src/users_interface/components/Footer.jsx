@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="bg-sky-500 mt-16 mx-6 md:mx-12 rounded-t-3xl shadow-inner text-white">
+    <footer className="bg-sky-500 mt-16 mx-4 md:mx-12 rounded-t-3xl shadow-inner text-white">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-12">
         <div className="grid md:grid-cols-4 gap-10">
           {/* BRAND */}
@@ -88,7 +88,13 @@ export default function Footer() {
 
         {/* bottom line */}
         <div className="border-t border-white/20 mt-10 pt-6 text-center text-sky-100 text-sm">
-          © {new Date().getFullYear()} name. All rights reserved.
+          © {new Date().getFullYear()} Book Your OP. All rights reserved.
+        </div>
+        <div className="mb-24 pt-6 text-center text-white text-sm">
+          Developed By{" "}
+          <a href="https://www.inspirezesttechnologies.com/" target="_blank">
+            InspireZest Technologies Pvt Ltd
+          </a>
         </div>
       </div>
     </footer>
