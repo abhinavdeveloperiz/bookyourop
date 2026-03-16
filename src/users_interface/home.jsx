@@ -300,7 +300,7 @@ export default function Home() {
         <section className="-mt-8 relative z-10">
           <div className="grid grid-cols-2 gap-3 md:gap-4">
             <Link to="/bookings">
-              <div className="bg-white rounded-2xl p-4 shadow-md border border-slate-100 flex items-center gap-3 hover:shadow-lg transition-all hover:-translate-y-0.5 active:scale-95">
+              <div className="bg-white h-24 rounded-2xl p-4 shadow-md border border-slate-100 flex items-center gap-3 hover:shadow-lg transition-all hover:-translate-y-0.5 active:scale-95">
                 <div className="bg-sky-100 rounded-xl p-3 shrink-0">
                   <svg
                     viewBox="0 0 24 24"
@@ -369,7 +369,7 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-gray-800 leading-tight">
+                  <p className="text-sm font-bold text-gray-800 leading-tight">
                     My Appointment
                   </p>
                   <p className="text-xs text-gray-400 mt-0.5">
@@ -380,7 +380,7 @@ export default function Home() {
             </Link>
 
             <Link to="/doctors">
-              <div className="bg-white rounded-2xl p-4 shadow-md border border-slate-100 flex items-center gap-3 hover:shadow-lg transition-all hover:-translate-y-0.5 active:scale-95">
+              <div className="bg-white h-24 rounded-2xl p-4 shadow-md border border-slate-100 flex items-center gap-3 hover:shadow-lg transition-all hover:-translate-y-0.5 active:scale-95">
                 <div className="bg-cyan-100 rounded-xl p-3 shrink-0">
                   <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8">
                     <rect
@@ -408,7 +408,7 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-gray-800 leading-tight">
+                  <p className="text-sm font-bold text-gray-800 leading-tight">
                     Book Your OP
                   </p>
                   <p className="text-xs text-gray-400 mt-0.5">
