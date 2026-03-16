@@ -369,7 +369,7 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-gray-800 leading-tight">
+                  <p className="text-xs font-bold text-gray-800 leading-tight">
                     My Appointment
                   </p>
                   <p className="text-xs text-gray-400 mt-0.5">
@@ -408,7 +408,7 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-gray-800 leading-tight">
+                  <p className="text-xs font-bold text-gray-800 leading-tight">
                     Book Your OP
                   </p>
                   <p className="text-xs text-gray-400 mt-0.5">
