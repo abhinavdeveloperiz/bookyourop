@@ -231,7 +231,7 @@ export default function Home() {
     <div className="bg-slate-50 min-h-screen pb-28">
       {/* ── HERO ── */}
       <section
-        className="px-5 pt-8 pb-20 h-[15vh] md:h-[30vh] lg:h-[60vh] relative overflow-hidden"
+        className="px-5 pt-8 pb-20 h-[20vh] md:h-[30vh] lg:h-[60vh] relative overflow-hidden"
         style={{
           backgroundImage: `url('${banner}')`,
           backgroundSize: "cover",
