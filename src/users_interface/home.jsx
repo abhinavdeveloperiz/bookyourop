@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import banner from "../assets/images/banner.png";
 
 const specialities = [
   {
@@ -225,75 +226,18 @@ const LocationIcon = () => (
   </svg>
 );
 
-const BedIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    className="w-3 h-3"
-  >
-    <path d="M3 9V6a1 1 0 011-1h16a1 1 0 011 1v3M3 9h18M3 9v9m18-9v9M3 18h18M7 9V7m10 2V7" />
-  </svg>
-);
-
 export default function Home() {
   return (
     <div className="bg-slate-50 min-h-screen pb-28">
       {/* ── HERO ── */}
       <section
-        className="px-5 pt-8 pb-20 relative overflow-hidden"
+        className="px-5 pt-8 pb-20 h-[15vh] md:h-[30vh] lg:h-[60vh] relative overflow-hidden"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&fit=crop')`,
+          backgroundImage: `url('${banner}')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-br from-sky-700/90 via-sky-600/85 to-cyan-500/80" />
-        <div className="absolute -top-10 -right-10 w-48 h-48 bg-white/10 rounded-full" />
-        <div className="absolute top-20 -right-4 w-24 h-24 bg-white/10 rounded-full" />
-        <div className="absolute -bottom-8 left-6 w-32 h-32 bg-white/10 rounded-full" />
-
-        <div className="relative z-10 max-w-2xl md:max-w-4xl mx-auto">
-          <h1 className="text-white text-2xl md:text-4xl font-bold leading-tight">
-            Find Your Doctor,
-            <br />
-            Book Instantly
-          </h1>
-          <p className="text-white/70 text-sm mt-2 md:mt-3 max-w-sm">
-            Consult top specialists and book hospital appointments near you.
-          </p>
-
-          {/* Search */}
-          <div className="mt-5 flex items-center gap-3 bg-white rounded-2xl px-4 py-3 shadow-xl shadow-sky-900/20 max-w-lg">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              className="w-5 h-5 text-gray-400 shrink-0"
-            >
-              <circle cx="11" cy="11" r="8" />
-              <path d="M21 21l-4.35-4.35" />
-            </svg>
-            <input
-              className="flex-1 text-sm text-gray-700 bg-transparent outline-none placeholder-gray-400"
-              placeholder="Search doctor, speciality, hospital..."
-            />
-            <div className="bg-sky-500 hover:bg-sky-600 transition-colors rounded-xl p-2 cursor-pointer shrink-0">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2.5"
-                className="w-4 h-4"
-              >
-                <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </section>
+      ></section>
 
       <div className="max-w-4xl mx-auto px-4 md:px-6">
         {/* ── QUICK ACTIONS ── */}
@@ -474,7 +418,10 @@ export default function Home() {
                 className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-md transition-all hover:-translate-y-0.5 cursor-pointer active:scale-95"
               >
                 {/* Mobile layout: row | Desktop: card with image top */}
-                <div className="md:block flex items-center gap-0">
+                <Link
+                  to="/doctors"
+                  className="md:block flex items-center gap-0"
+                >
                   {/* Image */}
                   <div className="md:w-full w-24 shrink-0 md:h-36 h-full relative overflow-hidden">
                     <img
@@ -506,7 +453,7 @@ export default function Home() {
                       </button>
                     </div>
                   </div>
-                </div>
+                </Link>
               </div>
             ))}
           </div>
