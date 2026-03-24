@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Doctors() {
-
   const doctorsData = [
     {
       id: 1,
@@ -68,9 +67,8 @@ export default function Doctors() {
   });
 
   return (
-    <div className="bg-slate-100 min-h-screen pb-20">
+    <div className="bg-blue-50 min-h-screen pb-20">
       <div className="max-w-5xl mx-auto px-4 py-6">
-
         {/* SEARCH */}
         <div className="bg-white rounded-xl shadow-sm p-3 flex items-center gap-2 mb-4">
           <i className="fa-solid fa-magnifying-glass text-gray-400"></i>
@@ -148,7 +146,6 @@ export default function Doctors() {
                 {/* Rating + Time */}
                 <div className="flex items-center justify-between mt-2">
                   <div className="flex gap-3 items-center text-xs text-gray-600">
-
                     {/* ⭐ Rating */}
                     <div className="bg-slate-100 px-2 py-1 rounded">
                       {renderStars(doc.rating)}
@@ -166,12 +163,10 @@ export default function Doctors() {
                     </button>
                   </Link>
                 </div>
-
               </div>
             </div>
           ))}
         </div>
-
       </div>
     </div>
   );

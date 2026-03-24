@@ -99,26 +99,14 @@ Message: ${form.message}`;
           </div>
 
           {/* MAP */}
-          <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+          <div className="bg-white rounded-2xl shadow-sm overflow-hidden mb-24 md:mb-0">
             <iframe
               title="map"
               src="https://maps.google.com/maps?q=kochi&t=&z=13&ie=UTF8&iwloc=&output=embed"
-              className="w-full h-full min-h-[350px]"
+              className="w-full h-full min-h-[350px] "
               loading="lazy"
             ></iframe>
           </div>
-        </div>
-
-        {/* WHATSAPP QUICK BUTTON */}
-        <div className="fixed bottom-6 right-6">
-          <a
-            href="https://wa.me/919999999999"
-            target="_blank"
-            rel="noreferrer"
-            className="bg-green-500 text-white w-14 h-14 flex items-center justify-center rounded-full shadow-lg hover:scale-110 transition"
-          >
-            <i className="fa-brands fa-whatsapp text-2xl"></i>
-          </a>
         </div>
       </div>
     </div>

@@ -1,15 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./users_interface/login";
-import Home from "./users_interface/home";
-import DoctorDetails from "./users_interface/doctor_details";
-// import FlotingButton from "./users_interface/components/FloatingContact"
-import Doctors from "./users_interface/doctors";
-import Bookings from "./users_interface/bookings";
-import Contact from "./users_interface/contact";
-import ScrollToTop from "./users_interface/components/ScrollToTop";
-import Footer from "./users_interface/components/Footer";
-import Navbar from "./users_interface/components/Navbar";
-import UserProfile from "./users_interface/userprofile";
+
+import Login from "./pages/user/login";
+import Home from "./pages/user/home";
+import DoctorDetails from "./pages/user/doctor_details";
+import Doctors from "./pages/user/doctors";
+import Bookings from "./pages/user/bookings";
+import Contact from "./pages/user/contact";
+import UserProfile from "./pages/user/userprofile";
+
+import ScrollToTop from "./pages/user/components/ScrollToTop";
+import Footer from "./pages/user/components/Footer";
+import Navbar from "./pages/user/components/Navbar";
 
 export default function App() {
   return (
