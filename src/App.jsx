@@ -1,6 +1,9 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
-// USER PAGES
+// scroll to top
+import ScrollToTop from "./pages/scrolltotop/ScrollToTop";
+
+//USER
 import Login from "./pages/user/login";
 import Home from "./pages/user/home";
 import DoctorDetails from "./pages/user/doctor_details";
@@ -11,9 +14,8 @@ import UserProfile from "./pages/user/userprofile";
 
 import Navbar from "./pages/user/components/Navbar";
 import Footer from "./pages/user/components/Footer";
-import ScrollToTop from "./pages/user/components/ScrollToTop";
 
-// DOCTOR COMPONENTS
+// DOCTOR
 import DoctorNavbar from "./pages/doctor/components/Navbar";
 import DoctorFooter from "./pages/doctor/components/Footer";
 
@@ -22,23 +24,40 @@ import Slots from "./pages/doctor/slots";
 import DoctorBookings from "./pages/doctor/bookings";
 import DoctorProfile from "./pages/doctor/profile";
 
+// ADMIN
+import Dashboard from "./pages/admin/dashboard";
+import Users from "./pages/admin/users";
+import DoctorsAdmin from "./pages/admin/doctors";
+import Hospitals from "./pages/admin/hospitals";
+import AdminBookings from "./pages/admin/bookings";
+
+import AdminNavbar from "./pages/admin/components/Navbar";
+
 function Layout() {
   const location = useLocation();
 
-  // ✅ FIXED CONDITION (IMPORTANT)
+  // ================= ROUTE CHECK =================
   const isDoctorRoute =
     location.pathname === "/doctor" || location.pathname.startsWith("/doctor/");
+
+  const isAdminRoute =
+    location.pathname === "/admin" || location.pathname.startsWith("/admin/");
 
   return (
     <>
       <ScrollToTop />
 
-      {/* NAVBAR */}
-      {isDoctorRoute ? <DoctorNavbar /> : <Navbar />}
+      {isAdminRoute ? (
+        <AdminNavbar />
+      ) : isDoctorRoute ? (
+        <DoctorNavbar />
+      ) : (
+        <Navbar />
+      )}
 
-      {/* ROUTES */}
+      {/* ROUTES  */}
       <Routes>
-        {/* ================= USER ROUTES ================= */}
+        {/* USER */}
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/doctors" element={<Doctors />} />
@@ -47,15 +66,21 @@ function Layout() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<UserProfile />} />
 
-        {/* ================= DOCTOR ROUTES ================= */}
+        {/* DOCTOR  */}
         <Route path="/doctor/appointments" element={<DoctorBookings />} />
         <Route path="/doctor/add-slot" element={<AddSlot />} />
         <Route path="/doctor/slots" element={<Slots />} />
         <Route path="/doctor/profile" element={<DoctorProfile />} />
+
+        {/* ADMIN */}
+        <Route path="/admin" element={<Dashboard />} />
+        <Route path="/admin/users" element={<Users />} />
+        <Route path="/admin/doctors" element={<DoctorsAdmin />} />
+        <Route path="/admin/hospitals" element={<Hospitals />} />
+        <Route path="/admin/bookings" element={<AdminBookings />} />
       </Routes>
 
-      {/* FOOTER */}
-      {isDoctorRoute ? <DoctorFooter /> : <Footer />}
+      {!isAdminRoute && (isDoctorRoute ? <DoctorFooter /> : <Footer />)}
     </>
   );
 }
