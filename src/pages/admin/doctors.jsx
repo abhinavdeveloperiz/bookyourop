@@ -32,10 +32,10 @@ export default function DoctorsAdmin() {
             </p>
           </div>
 
-          <button className="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-xl text-sm shadow-md transition flex items-center gap-2">
+          <Link to="/admin/add/doctor" className="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-xl text-sm shadow-md transition flex items-center gap-2">
             <i className="fa-solid fa-plus"></i>
             Add Doctor
-          </button>
+          </Link>
         </div>
 
         {/* LIST */}
