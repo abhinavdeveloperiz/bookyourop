@@ -4,19 +4,11 @@ export default function Login() {
   return (
     <div className="h-[100vh]  bg-white flex items-center justify-center px-4">
       {/* Card */}
-      <div className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl border -mt-32 border-gray-100 p-8">
+      <div className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl border -mt-32 md:mt-0 border-gray-100 p-8">
         {/* Brand */}
         <div className="text-center mb-6">
           <h1 className="text-xl font-bold text-sky-600">Book My OP</h1>
-          <p className="text-xs text-gray-400 mt-1">
-            Connect with nearby doctors
-          </p>
-        </div>
-
-        {/* Heading */}
-        <div className="text-center mb-6">
-          <h2 className="text-2xl font-semibold text-gray-800">Welcome Back</h2>
-          <p className="text-sm text-gray-500 mt-1">Sign in to continue</p>
+          <p className="text-xs text-gray-400 mt-1">Sign in to continue</p>
         </div>
 
         {/* Form */}
