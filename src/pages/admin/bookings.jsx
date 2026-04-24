@@ -364,7 +364,7 @@ export default function AdminBookings() {
             <div
               key={b.id}
               className="bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
-              style={{ animation: `fadeUp 0.35s ease ${i * 0.07}s both` }}
+              data-aos="fade-up"
             >
               {/* Card Top */}
               <div className="flex items-start gap-3.5 px-4 pt-4 pb-3">

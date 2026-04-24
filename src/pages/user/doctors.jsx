@@ -170,14 +170,10 @@ export default function Doctors() {
                     <div className="bg-slate-100 px-2 py-1 rounded">
                       {renderStars(doc.rating)}
                     </div>
-
-                    <span className="bg-slate-100 px-2 py-1 rounded">
-                      🕒 {doc.time}
-                    </span>
                   </div>
 
                   <Link to="/doctordetails">
-                    <button className="bg-green-500 hover:bg-green-600 text-white text-xs px-4 py-2 rounded-xl shadow">
+                    <button className="bg-green-500 hover:bg-green-600 text-white text-sm px-8 py-2 rounded-xl shadow">
                       Book
                     </button>
                   </Link>

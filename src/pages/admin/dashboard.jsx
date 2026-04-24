@@ -84,7 +84,10 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div className="px-4 -mt-10 max-w-6xl mx-auto z-10 relative">
+      <div
+        className="px-4 -mt-10 max-w-6xl mx-auto z-10 relative"
+        data-aos="fade-up"
+      >
         {/* 🔥 STATS */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
           {stats.map((s, i) => (

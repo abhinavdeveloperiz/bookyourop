@@ -68,7 +68,10 @@ export default function DoctorsAdmin() {
       </div>
 
       {/* DOCTOR CARDS */}
-      <div className="px-4 -mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div
+        className="px-4 -mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5"
+        data-aos="fade-up"
+      >
         {doctors.map((d, i) => (
           <div
             key={i}

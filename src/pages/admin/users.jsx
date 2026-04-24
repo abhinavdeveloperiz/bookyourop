@@ -4,7 +4,7 @@ export default function Users() {
   const users = [
     { name: "Abhinav M", email: "abhinav@mail.com" },
     { name: "Rahul Kumar", email: "rahul@mail.com" },
-    { name: "Anjali Nair", email: "anjali@mail.com"},
+    { name: "Anjali Nair", email: "anjali@mail.com" },
     { name: "Vikram Das", email: "vikram@mail.com" },
     { name: "Sneha Roy", email: "sneha@mail.com" },
     { name: "Arjun Menon", email: "arjun@mail.com" },
@@ -35,7 +35,10 @@ export default function Users() {
       </div>
 
       {/* USER CARDS */}
-      <div className="px-4 -mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5 z-10 relative max-w-7xl mx-auto">
+      <div
+        className="px-4 -mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5 z-10 relative max-w-7xl mx-auto"
+        data-aos="fade-up"
+      >
         {users.map((user, i) => {
           const initials = user.name
             .split(" ")
@@ -64,13 +67,11 @@ export default function Users() {
                 </div>
               </div>
 
-             
-
               {/* ACTIONS */}
               <div className="flex gap-2">
                 {/* DETAILS BUTTON */}
                 <Link
-                  to='/admin/user/details'
+                  to="/admin/user/details"
                   className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm py-2 rounded-xl text-center hover:from-blue-700 hover:to-indigo-700 transition"
                 >
                   View Details

@@ -1,4 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 // scroll to top
 import ScrollToTop from "./pages/scrolltotop/ScrollToTop";
@@ -29,7 +32,7 @@ import Dashboard from "./pages/admin/dashboard";
 import Users from "./pages/admin/users";
 import UserDetails from "./pages/admin/user_details";
 import DoctorsAdmin from "./pages/admin/doctors";
-import DoctorsBookSlot from "./pages/admin/doctors_book_slot"
+import DoctorsBookSlot from "./pages/admin/doctors_book_slot";
 import Hospitals from "./pages/admin/hospitals";
 import HospitalDetails from "./pages/admin/hospital_details";
 import AdminBookings from "./pages/admin/bookings";
@@ -42,7 +45,22 @@ import AdminNavbar from "./pages/admin/components/Navbar";
 function Layout() {
   const location = useLocation();
 
-  // ================= ROUTE CHECK =================
+
+  useEffect(() => {
+    AOS.init({
+      duration: 700,
+      easing: "ease-out-cubic",
+      once: true, 
+      offset: 60, 
+    });
+  }, []);
+
+ 
+  useEffect(() => {
+    AOS.refresh();
+  }, [location.pathname]);
+
+
   const isDoctorRoute =
     location.pathname === "/doctor" || location.pathname.startsWith("/doctor/");
 
@@ -84,11 +102,10 @@ function Layout() {
         <Route path="/admin/user/details" element={<UserDetails />} />
         <Route path="/admin/doctors" element={<DoctorsAdmin />} />
         <Route path="/admin/doctors/book/slot" element={<DoctorsBookSlot />} />
-        <Route path="/admin/add/doctor" element={<AddDoctor/>}></Route>
-
+        <Route path="/admin/add/doctor" element={<AddDoctor />}></Route>
 
         <Route path="/admin/hospitals" element={<Hospitals />} />
-        <Route path="/admin/add/hospital" element={<AddHospital/>}></Route>
+        <Route path="/admin/add/hospital" element={<AddHospital />}></Route>
         <Route path="/admin/hospital/:id" element={<HospitalDetails />} />
 
         <Route path="/admin/bookings" element={<AdminBookings />} />
