@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Login() {
   return (
-    <div className="h-[100vh]  bg-gradient-to-br from-sky-50 via-white to-green-50 flex items-center justify-center px-4">
+    <div className="h-[100vh]  bg-white flex items-center justify-center px-4">
       {/* Card */}
       <div className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl border border-gray-100 p-8">
         {/* Brand */}
