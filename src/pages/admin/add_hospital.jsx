@@ -8,6 +8,8 @@ export default function AddHospital() {
     address: "",
     phone: "",
     image: null,
+    specializations: "",
+    gmapUrl: "",
   });
 
   const [preview, setPreview] = useState(null);
@@ -24,7 +26,14 @@ export default function AddHospital() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Hospital Data:", form);
+    const hospitalData = {
+      ...form,
+      specializations: form.specializations
+        .split(",")
+        .map((s) => s.trim())
+        .filter((s) => s),
+    };
+    console.log("Hospital Data:", hospitalData);
   };
 
   return (
@@ -122,6 +131,32 @@ export default function AddHospital() {
               onChange={handleChange}
               className="w-full mt-1 p-3 rounded-lg border border-gray-500 focus:ring-2 focus:ring-blue-400 outline-none"
               placeholder="Full address"
+            />
+          </div>
+
+          {/* SPECIALIZATIONS */}
+          <div>
+            <label className="text-sm text-gray-600">Specializations</label>
+            <input
+              type="text"
+              name="specializations"
+              value={form.specializations}
+              onChange={handleChange}
+              className="w-full mt-1 p-3 rounded-lg border border-gray-500 focus:ring-2 focus:ring-blue-400 outline-none"
+              placeholder="Cardiologist, Gynecologist, Neurologist (comma separated)"
+            />
+          </div>
+
+          {/* GOOGLE MAP LOCATION */}
+          <div>
+            <label className="text-sm text-gray-600">Google Maps URL</label>
+            <input
+              type="url"
+              name="gmapUrl"
+              value={form.gmapUrl}
+              onChange={handleChange}
+              className="w-full mt-1 p-3 rounded-lg border border-gray-500 focus:ring-2 focus:ring-blue-400 outline-none"
+              placeholder="https://maps.google.com/..."
             />
           </div>
 

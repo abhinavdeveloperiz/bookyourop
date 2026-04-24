@@ -27,8 +27,10 @@ import DoctorProfile from "./pages/doctor/profile";
 // ADMIN
 import Dashboard from "./pages/admin/dashboard";
 import Users from "./pages/admin/users";
+import UserDetails from "./pages/admin/user_details";
 import DoctorsAdmin from "./pages/admin/doctors";
 import Hospitals from "./pages/admin/hospitals";
+import HospitalDetails from "./pages/admin/hospital_details";
 import AdminBookings from "./pages/admin/bookings";
 
 import AddDoctor from "./pages/admin/add_doctor";
@@ -78,12 +80,13 @@ function Layout() {
         {/* ADMIN */}
         <Route path="/admin" element={<Dashboard />} />
         <Route path="/admin/users" element={<Users />} />
-
+        <Route path="/admin/user/details" element={<UserDetails />} />
         <Route path="/admin/doctors" element={<DoctorsAdmin />} />
         <Route path="/admin/add/doctor" element={<AddDoctor/>}></Route>
 
         <Route path="/admin/hospitals" element={<Hospitals />} />
         <Route path="/admin/add/hospital" element={<AddHospital/>}></Route>
+        <Route path="/admin/hospital/:id" element={<HospitalDetails />} />
 
         <Route path="/admin/bookings" element={<AdminBookings />} />
       </Routes>

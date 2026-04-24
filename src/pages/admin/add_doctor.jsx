@@ -9,6 +9,9 @@ export default function AddDoctor() {
     experience: "",
     description: "",
     image: null,
+    hospital: "",
+    doctor_type: "hospital",
+    fee_type: "admin",
   });
 
   const [preview, setPreview] = useState(null);
@@ -28,20 +31,18 @@ export default function AddDoctor() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     console.log("Doctor Data:", form);
-
-    // TODO: send to backend (Django API)
   };
 
   return (
-    <div className="min-h-screen bg-blue-50 to-indigo-100 py-6 px-4 mb-12">
+    <div className="min-h-screen bg-blue-50 py-6 px-4 mb-12">
       <div className="max-w-2xl mx-auto bg-white/80 backdrop-blur border border-white/40 rounded-2xl shadow-lg p-6">
-        {/* HEADER */}
-        <h1 className="text-2xl font-bold text-gray-800 mb-6">Add Doctor</h1>
+        <h1 className="text-2xl font-bold text-gray-800 mb-6">
+          Add Doctor
+        </h1>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* IMAGE UPLOAD */}
+          {/* IMAGE */}
           <div className="flex flex-col items-center gap-3">
             <div className="w-24 h-24 rounded-full overflow-hidden bg-gray-100 border flex items-center justify-center">
               {preview ? (
@@ -75,28 +76,56 @@ export default function AddDoctor() {
               value={form.name}
               onChange={handleChange}
               className="w-full mt-1 p-3 rounded-lg border border-gray-500 focus:ring-2 focus:ring-blue-400 outline-none"
-              placeholder="Enter doctor name"
               required
             />
           </div>
 
+          {/* DOCTOR TYPE */}
           <div>
-            <label className="text-sm text-gray-600">Hospital</label>
-            <select
-              name="hospital"
-              value={form.hospital}
-              onChange={handleChange}
-              className="w-full mt-1 p-3 rounded-lg border border-gray-500 focus:ring-2 focus:ring-blue-400 outline-none"
-              required
-            >
-              <option value="">Select Hospital</option>
+            <label className="text-sm text-gray-600">Doctor Type</label>
+            <div className="flex gap-4 mt-2">
+              <label className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="doctor_type"
+                  value="hospital"
+                  checked={form.doctor_type === "hospital"}
+                  onChange={handleChange}
+                />
+                Hospital
+              </label>
 
-              {/* Static for now */}
-              <option value="apollo">Apollo Hospital</option>
-              <option value="aster">Aster Medcity</option>
-              <option value="kims">KIMS Hospital</option>
-            </select>
+              <label className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="doctor_type"
+                  value="individual"
+                  checked={form.doctor_type === "individual"}
+                  onChange={handleChange}
+                />
+                Individual
+              </label>
+            </div>
           </div>
+
+          {/* HOSPITAL (CONDITIONAL) */}
+          {form.doctor_type === "hospital" && (
+            <div>
+              <label className="text-sm text-gray-600">Hospital</label>
+              <select
+                name="hospital"
+                value={form.hospital}
+                onChange={handleChange}
+                className="w-full mt-1 p-3 rounded-lg border border-gray-500 focus:ring-2 focus:ring-blue-400 outline-none"
+                required
+              >
+                <option value="">Select Hospital</option>
+                <option value="apollo">Apollo Hospital</option>
+                <option value="aster">Aster Medcity</option>
+                <option value="kims">KIMS Hospital</option>
+              </select>
+            </div>
+          )}
 
           {/* CATEGORY */}
           <div>
@@ -107,7 +136,6 @@ export default function AddDoctor() {
               value={form.category}
               onChange={handleChange}
               className="w-full mt-1 p-3 rounded-lg border border-gray-500 focus:ring-2 focus:ring-blue-400 outline-none"
-              placeholder="Cardiologist / Dentist..."
               required
             />
           </div>
@@ -123,9 +151,43 @@ export default function AddDoctor() {
               value={form.fee}
               onChange={handleChange}
               className="w-full mt-1 p-3 rounded-lg border border-gray-500 focus:ring-2 focus:ring-blue-400 outline-none"
-              placeholder="Enter fee"
               required
             />
+          </div>
+
+          {/* FEE TYPE */}
+          <div>
+            <label className="text-sm text-gray-600">
+              Fee Collection Type
+            </label>
+
+            <div className="flex gap-4 mt-2">
+              <label className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="fee_type"
+                  value="admin"
+                  checked={form.fee_type === "admin"}
+                  onChange={handleChange}
+                />
+                Admin Collects
+              </label>
+
+              <label className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="fee_type"
+                  value="doctor"
+                  checked={form.fee_type === "doctor"}
+                  onChange={handleChange}
+                />
+                Doctor Collects Directly
+              </label>
+            </div>
+
+            <p className="text-xs text-gray-400 mt-2">
+              If doctor collects, payment is handled offline.
+            </p>
           </div>
 
           {/* PHONE */}
@@ -137,7 +199,6 @@ export default function AddDoctor() {
               value={form.phone}
               onChange={handleChange}
               className="w-full mt-1 p-3 rounded-lg border border-gray-500 focus:ring-2 focus:ring-blue-400 outline-none"
-              placeholder="+91..."
             />
           </div>
 
@@ -150,7 +211,6 @@ export default function AddDoctor() {
               value={form.experience}
               onChange={handleChange}
               className="w-full mt-1 p-3 rounded-lg border border-gray-500 focus:ring-2 focus:ring-blue-400 outline-none"
-              placeholder="5+ years"
             />
           </div>
 
@@ -163,7 +223,6 @@ export default function AddDoctor() {
               onChange={handleChange}
               rows="3"
               className="w-full mt-1 p-3 rounded-lg border border-gray-500 focus:ring-2 focus:ring-blue-400 outline-none"
-              placeholder="About doctor..."
             ></textarea>
           </div>
 

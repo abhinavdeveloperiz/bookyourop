@@ -26,6 +26,12 @@ export default function Dashboard() {
       icon: "fa-calendar-check",
       color: "from-sky-500 to-sky-600",
     },
+    {
+      title: "Todays Bookings",
+      value: "20",
+      icon: "fa-calendar-check",
+      color: "from-orange-500 to-orange-600",
+    },
   ];
 
   const activities = [
@@ -63,36 +69,41 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-blue-50 pb-24">
-      <div className="max-w-6xl mx-auto px-4 py-6">
-        {/* HEADER */}
-        <div className="mb-6 flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-800">Dashboard</h1>
-            <p className="text-sm text-gray-500">Welcome, Admin 👋</p>
-          </div>
-        </div>
+    <div className="min-h-screen bg-slate-50 pb-28">
+      {/* 🔥 HEADER */}
+      <div className="relative bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-900 px-5 pt-8 pb-20 overflow-hidden">
+        <div className="absolute -top-14 -right-14 w-56 h-56 bg-indigo-500/20 rounded-full" />
+        <div className="absolute -bottom-10 left-[40%] w-36 h-36 bg-purple-500/15 rounded-full" />
 
-        {/* STATS */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div className="relative z-10">
+          <p className="text-blue-300 text-xs uppercase font-semibold">
+            Admin Panel
+          </p>
+          <h1 className="text-white text-2xl font-bold">Dashboard Overview</h1>
+          <p className="text-white/50 text-sm mt-1">Welcome back, Admin 👋</p>
+        </div>
+      </div>
+
+      <div className="px-4 -mt-10 max-w-6xl mx-auto z-10 relative">
+        {/* 🔥 STATS */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
           {stats.map((s, i) => (
             <div
               key={i}
-              className={`rounded-2xl p-4 text-white shadow-md bg-gradient-to-br ${s.color} hover:scale-[1.02] transition`}
+              className={`rounded-2xl p-4 text-white shadow-lg bg-gradient-to-br ${s.color} hover:shadow-xl hover:-translate-y-1 transition`}
             >
               <div className="flex justify-between items-center">
-                <p className="text-sm opacity-80">{s.title}</p>
-                <i className={`fa-solid ${s.icon} text-lg`}></i>
+                <p className="text-xs opacity-80">{s.title}</p>
+                <i className={`fa-solid ${s.icon}`}></i>
               </div>
-
               <h2 className="text-2xl font-bold mt-3">{s.value}</h2>
             </div>
           ))}
         </div>
 
-        {/* QUICK ACTIONS */}
-        <div className="mt-8">
-          <h2 className="text-md font-semibold text-gray-700 mb-3">
+        {/* 🔥 QUICK ACTIONS */}
+        <div className="mb-8">
+          <h2 className="text-sm font-semibold text-gray-600 mb-3">
             Quick Actions
           </h2>
 
@@ -101,24 +112,75 @@ export default function Dashboard() {
               <Link
                 key={i}
                 to={item.path}
-                className="bg-white/70 backdrop-blur rounded-2xl p-4 shadow hover:shadow-md hover:-translate-y-1 transition flex flex-col items-center"
+                className="bg-white/80 backdrop-blur rounded-2xl p-5 shadow hover:shadow-lg hover:-translate-y-1 transition flex flex-col items-center"
               >
-                <div className="bg-sky-100 text-sky-600 p-3 rounded-xl mb-2">
+                <div className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white p-3 rounded-xl mb-2">
                   <i className={`fa-solid ${item.icon}`}></i>
                 </div>
-                <p className="text-sm font-medium text-gray-700">{item.name}</p>
+                <p className="text-sm font-semibold text-gray-700">
+                  {item.name}
+                </p>
               </Link>
             ))}
           </div>
         </div>
 
-        {/* ACTIVITY */}
-        <div className="mt-8">
-          <h2 className="text-md font-semibold text-gray-700 mb-3">
+        {/* 🔥 DOCTORS WITHOUT SLOTS */}
+        <div className="mb-8">
+          <h2 className="text-sm font-semibold text-red-500 mb-3">
+            Doctors Without Slots Today
+          </h2>
+
+          <div className="bg-white/80 backdrop-blur rounded-2xl shadow p-4 space-y-3">
+            {[
+              {
+                name: "Dr. Rahul",
+                specialization: "Cardiologist",
+                image: "https://randomuser.me/api/portraits/men/32.jpg",
+              },
+              {
+                name: "Dr. Meera",
+                specialization: "Dermatologist",
+                image: "https://randomuser.me/api/portraits/women/44.jpg",
+              },
+              {
+                name: "Dr. Arun",
+                specialization: "Orthopedic",
+                image: "https://randomuser.me/api/portraits/men/76.jpg",
+              },
+            ].map((doc, i) => (
+              <div
+                key={i}
+                className="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 transition"
+              >
+                <div className="flex items-center gap-3">
+                  <img
+                    src={doc.image}
+                    className="w-12 h-12 rounded-full object-cover border-2 border-red-100"
+                  />
+                  <div>
+                    <p className="text-sm font-semibold">{doc.name}</p>
+                    <p className="text-xs text-gray-500">
+                      {doc.specialization}
+                    </p>
+                  </div>
+                </div>
+
+                <span className="text-xs bg-red-100 text-red-600 px-3 py-1 rounded-full">
+                  No Slots
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 🔥 ACTIVITY */}
+        <div>
+          <h2 className="text-sm font-semibold text-gray-600 mb-3">
             Recent Activity
           </h2>
 
-          <div className="bg-white/80 backdrop-blur rounded-2xl shadow p-2">
+          <div className="bg-white/80 backdrop-blur rounded-2xl shadow p-3 space-y-2">
             {activities.map((item, i) => {
               let icon = "fa-circle";
               let color = "text-gray-400";
@@ -143,13 +205,13 @@ export default function Dashboard() {
               return (
                 <div
                   key={i}
-                  className="flex items-start gap-3 px-3 py-3 hover:bg-gray-100  rounded-xl transition"
+                  className="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition"
                 >
                   <div className={`p-2 rounded-lg bg-gray-100 ${color}`}>
                     <i className={`fa-solid ${icon}`}></i>
                   </div>
 
-                  <div className="flex-1 ">
+                  <div className="flex-1">
                     <p className="text-sm text-gray-700">
                       <span className="font-semibold">{item.user}</span>{" "}
                       {item.message}
