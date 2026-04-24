@@ -4,7 +4,7 @@ export default function Login() {
   return (
     <div className="h-[100vh]  bg-white flex items-center justify-center px-4">
       {/* Card */}
-      <div className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl border border-gray-100 p-8">
+      <div className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl border -mt-32 border-gray-100 p-8">
         {/* Brand */}
         <div className="text-center mb-6">
           <h1 className="text-xl font-bold text-sky-600">Book My OP</h1>
