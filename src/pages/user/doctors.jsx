@@ -89,7 +89,10 @@ export default function Doctors() {
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 -mt-16 relative z-10">
+      <div
+        className="max-w-5xl mx-auto px-4 -mt-16 relative z-10"
+        data-aos="fade-up"
+      >
         {/* 🔥 SEARCH */}
         <div className="bg-white/90 backdrop-blur rounded-2xl shadow p-3 flex items-center gap-2 mb-4">
           <i className="fa-solid fa-magnifying-glass text-gray-400"></i>
@@ -173,8 +176,14 @@ export default function Doctors() {
                   </div>
 
                   <Link to="/doctordetails">
-                    <button className="bg-green-500 hover:bg-green-600 text-white text-sm px-8 py-2 rounded-xl shadow">
-                      Book
+                    <button className="relative overflow-hidden bg-green-500 hover:bg-green-600 text-white text-sm px-8 py-2 rounded-xl shadow group">
+                      {/* Shine layer */}
+                      <span className="absolute inset-0">
+                        <span className="absolute top-0 left-[-75%] w-1/2 h-full bg-white/30 skew-x-12 animate-shine"></span>
+                      </span>
+
+                      {/* Text */}
+                      <span className="relative z-10">Book Now</span>
                     </button>
                   </Link>
                 </div>

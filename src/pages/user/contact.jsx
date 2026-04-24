@@ -46,7 +46,10 @@ Message: ${form.message}`;
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 -mt-16 relative z-10">
+      <div
+        className="max-w-6xl mx-auto px-4 -mt-16 relative z-10"
+        data-aos="fade-up"
+      >
         {/* 🔥 CONTACT CARDS */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
           <div className="bg-white backdrop-blur rounded-2xl p-5 shadow hover:shadow-lg transition text-center">

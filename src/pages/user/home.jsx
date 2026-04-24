@@ -239,7 +239,7 @@ export default function Home() {
         }}
       ></section>
 
-      <div className="max-w-4xl mx-auto px-4 md:px-6">
+      <div className="max-w-4xl mx-auto px-4 md:px-6" data-aos="fade-up">
         {/* ── QUICK ACTIONS ── */}
         <section className="-mt-8 relative z-10">
           <div className="grid grid-cols-2 gap-3 md:gap-4">

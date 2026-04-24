@@ -68,7 +68,10 @@ export default function Bookings() {
         </div>
       </div>
 
-      <div className="max-w-3xl mx-auto px-4 -mt-16 relative z-10">
+      <div
+        className="max-w-3xl mx-auto px-4 -mt-16 relative z-10"
+        data-aos="fade-up"
+      >
         {/* 🔥 TABS (UPGRADED) */}
         <div className="mb-6">
           <div className="flex bg-white/80 backdrop-blur p-1 rounded-full shadow">
