@@ -44,7 +44,6 @@ export default function AdminNavbar() {
                       : "text-gray-600 hover:bg-gray-50 hover:text-sky-600"
                   }`}
                 >
-                  <i className={`fa-solid ${link.icon}`}></i>
                   {link.name}
                 </Link>
               );

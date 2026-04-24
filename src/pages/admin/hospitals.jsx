@@ -9,7 +9,6 @@ const hospitals = [
     phone: "+91 9876543210",
     type: "Multi Speciality",
     beds: 320,
-    rating: 4.7,
     specializations: ["Cardiology", "Orthopedic", "Neurology"],
     image:
       "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=800&q=80",
@@ -22,7 +21,6 @@ const hospitals = [
     phone: "+91 9988776655",
     type: "Super Speciality",
     beds: 580,
-    rating: 4.9,
     specializations: ["Dermatology", "Pediatrics", "ENT"],
     image:
       "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&q=80",
@@ -35,7 +33,6 @@ const hospitals = [
     phone: "+91 9123456789",
     type: "Multi Speciality",
     beds: 450,
-    rating: 4.5,
     specializations: ["Oncology", "Nephrology", "Pulmonology"],
     image:
       "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80",
@@ -48,7 +45,6 @@ const hospitals = [
     phone: "+91 9876543210",
     type: "Multi Speciality",
     beds: 320,
-    rating: 4.7,
     specializations: ["Cardiology", "Orthopedic", "Neurology"],
     image:
       "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=800&q=80",
@@ -61,7 +57,6 @@ const hospitals = [
     phone: "+91 9988776655",
     type: "Super Speciality",
     beds: 580,
-    rating: 4.9,
     specializations: ["Dermatology", "Pediatrics", "ENT"],
     image:
       "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&q=80",
@@ -74,7 +69,6 @@ const hospitals = [
     phone: "+91 9123456789",
     type: "Multi Speciality",
     beds: 450,
-    rating: 4.5,
     specializations: ["Oncology", "Nephrology", "Pulmonology"],
     image:
       "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80",
@@ -101,27 +95,7 @@ const specColors = [
   "bg-amber-50 text-amber-600 border border-amber-100",
 ];
 
-function StarRating({ rating }) {
-  const full = Math.floor(rating);
-  const half = rating % 1 >= 0.5;
-  return (
-    <div className="flex items-center gap-0.5">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <i
-          key={i}
-          className={`text-[11px] ${
-            i < full
-              ? "fa-solid fa-star text-amber-400"
-              : i === full && half
-                ? "fa-solid fa-star-half-stroke text-amber-400"
-                : "fa-regular fa-star text-gray-300"
-          }`}
-        />
-      ))}
-      <span className="text-xs font-semibold text-gray-700 ml-1">{rating}</span>
-    </div>
-  );
-}
+
 
 export default function Hospitals() {
   return (
@@ -166,13 +140,7 @@ export default function Hospitals() {
               label: "Total Beds",
               value: hospitals.reduce((a, b) => a + b.beds, 0),
             },
-            {
-              icon: "fa-solid fa-star",
-              label: "Avg Rating",
-              value: (
-                hospitals.reduce((a, b) => a + b.rating, 0) / hospitals.length
-              ).toFixed(1),
-            },
+         
           ].map((s) => (
             <div
               key={s.label}
@@ -218,14 +186,6 @@ export default function Hospitals() {
                 >
                   <span className={`w-1.5 h-1.5 rounded-full ${tc.dot}`} />
                   {h.type}
-                </div>
-
-                {/* Rating — top right */}
-                <div className="absolute top-3 right-3 flex items-center gap-1 bg-white/90 backdrop-blur-sm rounded-full px-2.5 py-1">
-                  <i className="fa-solid fa-star text-amber-400 text-[10px]" />
-                  <span className="text-xs font-bold text-gray-800">
-                    {h.rating}
-                  </span>
                 </div>
 
                 {/* Hospital name overlaid on image bottom */}

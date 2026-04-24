@@ -7,6 +7,7 @@ export default function AddHospital() {
     location: "",
     address: "",
     phone: "",
+    beds: "",
     image: null,
     specializations: "",
     gmapUrl: "",
@@ -92,6 +93,20 @@ export default function AddHospital() {
               onChange={handleChange}
               className="w-full mt-1 p-3 rounded-lg border border-gray-500 focus:ring-2 focus:ring-blue-400 outline-none"
               placeholder="Multi Speciality"
+            />
+          </div>
+
+          {/* BEDS */}
+          <div>
+            <label className="text-sm text-gray-600">Number of Beds</label>
+            <input
+              type="number"
+              name="beds"
+              value={form.beds}
+              onChange={handleChange}
+              className="w-full mt-1 p-3 rounded-lg border border-gray-500 focus:ring-2 focus:ring-blue-400 outline-none"
+              placeholder="Enter number of beds"
+              min="1"
             />
           </div>
 

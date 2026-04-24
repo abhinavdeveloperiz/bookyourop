@@ -134,7 +134,7 @@ export default function Dashboard() {
             Doctors Without Slots Today
           </h2>
 
-          <div className="bg-white/80 backdrop-blur rounded-2xl shadow p-4 space-y-3">
+          <div className="bg-white/80 backdrop-blur rounded-2xl shadow p-4 border border-red-500 space-y-3">
             {[
               {
                 name: "Dr. Rahul",
