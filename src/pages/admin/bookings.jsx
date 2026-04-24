@@ -376,10 +376,13 @@ export default function AdminBookings() {
                   <p className="font-semibold text-gray-900 text-sm">
                     {b.patient}
                   </p>
-                  <p className="text-xs text-gray-400 flex items-center gap-1 mt-0.5">
-                    <i className="fa-solid fa-phone text-green-400 text-[10px]" />
+                  <a
+                    href={`tel:${b.phone}`}
+                    className="text-md p-2 border w-40 rounded-3xl bg-blue-100 text-gray-900 flex items-center gap-1 mt-0.5"
+                  >
+                    <i className="fa-solid fa-phone text-green-600 text-md " />
                     {b.phone}
-                  </p>
+                  </a>
                 </div>
 
                 <span

@@ -147,11 +147,11 @@ export default function DoctorsAdmin() {
                 </Link>
 
                 <Link
-                  to="/admin/addslot/doctor"
+                  to="/admin/doctors/book/slot"
                   className="flex-1 flex items-center justify-center bg-blue-200 text-black text-sm py-2 rounded-xl hover:bg-blue-400 transition"
                 >
-                  <i className="fa-solid fa-pen mr-1"></i>
-                  Add Slot
+                  <i class="fa-solid fa-plus mb-1"></i>
+                  Slot
                 </Link>
 
                 <button className="w-10 h-10 bg-red-100 text-red-500 rounded-xl hover:bg-red-500 hover:text-white transition">

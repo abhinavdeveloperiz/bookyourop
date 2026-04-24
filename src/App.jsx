@@ -29,6 +29,7 @@ import Dashboard from "./pages/admin/dashboard";
 import Users from "./pages/admin/users";
 import UserDetails from "./pages/admin/user_details";
 import DoctorsAdmin from "./pages/admin/doctors";
+import DoctorsBookSlot from "./pages/admin/doctors_book_slot"
 import Hospitals from "./pages/admin/hospitals";
 import HospitalDetails from "./pages/admin/hospital_details";
 import AdminBookings from "./pages/admin/bookings";
@@ -82,7 +83,9 @@ function Layout() {
         <Route path="/admin/users" element={<Users />} />
         <Route path="/admin/user/details" element={<UserDetails />} />
         <Route path="/admin/doctors" element={<DoctorsAdmin />} />
+        <Route path="/admin/doctors/book/slot" element={<DoctorsBookSlot />} />
         <Route path="/admin/add/doctor" element={<AddDoctor/>}></Route>
+
 
         <Route path="/admin/hospitals" element={<Hospitals />} />
         <Route path="/admin/add/hospital" element={<AddHospital/>}></Route>
