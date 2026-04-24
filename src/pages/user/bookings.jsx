@@ -41,39 +41,42 @@ export default function Bookings() {
       ? bookings.filter((b) => b.status === "upcoming")
       : bookings.filter((b) => b.status !== "upcoming");
 
-  const statusStyles = (status) => {
-    if (status === "completed") return "bg-green-100 text-green-600";
-    if (status === "cancelled") return "bg-red-100 text-red-600";
-    return "bg-blue-100 text-blue-600";
-  };
-
-  const statusIcon = (status) => {
-    if (status === "completed") return "fa-check";
-    if (status === "cancelled") return "fa-xmark";
-    return "fa-clock";
+  const statusStyles = {
+    completed: "bg-green-100 text-green-600",
+    cancelled: "bg-red-100 text-red-600",
+    upcoming: "bg-blue-100 text-blue-600",
   };
 
   return (
-    <div className="bg-sky-50 min-h-screen">
-      <div className="max-w-3xl mx-auto px-4 pb-24">
-        {/* HEADER */}
-        <div className="pt-6 pb-4">
-          <h1 className="text-2xl font-semibold text-gray-800">
-            My Appointments
-          </h1>
-          <p className="text-gray-500 text-sm">
-            Track and manage your consultations
+    <div className="min-h-screen bg-slate-50 pb-28">
+      {/* 🔥 HERO BANNER (MATCH CONTACT STYLE) */}
+      <div className="relative bg-gradient-to-br from-sky-200 via-sky-300 to-sky-400 px-6 pt-10 pb-24 overflow-hidden">
+        <div className="absolute -top-14 -right-14 w-56 h-56 bg-indigo-900/30 rounded-full" />
+        <div className="absolute -bottom-10 left-[40%] w-36 h-36 bg-purple-500/35 rounded-full" />
+
+        {/* Content */}
+        <div className="relative z-10 max-w-5xl mx-auto">
+          <p className="text-indigo-900 text-xs uppercase font-semibold mb-1">
+            Appointments
+          </p>
+
+          <h1 className="text-indigo-950 text-3xl font-bold">My Bookings</h1>
+
+          <p className="text-indigo-900/70 text-sm mt-2">
+            Track and manage your consultations easily
           </p>
         </div>
+      </div>
 
-        {/* STICKY TABS (Mobile UX boost) */}
-        <div className="sticky top-0 z-10 bg-sky-50 pb-4">
-          <div className="flex bg-white p-1 rounded-full shadow-sm">
+      <div className="max-w-3xl mx-auto px-4 -mt-16 relative z-10">
+        {/* 🔥 TABS (UPGRADED) */}
+        <div className="mb-6">
+          <div className="flex bg-white/80 backdrop-blur p-1 rounded-full shadow">
             <button
               onClick={() => setActiveTab("upcoming")}
               className={`flex-1 py-2 rounded-full text-sm font-medium transition ${
                 activeTab === "upcoming"
-                  ? "bg-sky-500 text-white"
+                  ? "bg-blue-600 text-white shadow"
                   : "text-gray-600"
               }`}
             >
@@ -83,7 +86,9 @@ export default function Bookings() {
             <button
               onClick={() => setActiveTab("past")}
               className={`flex-1 py-2 rounded-full text-sm font-medium transition ${
-                activeTab === "past" ? "bg-sky-500 text-white" : "text-gray-600"
+                activeTab === "past"
+                  ? "bg-blue-600 text-white shadow"
+                  : "text-gray-600"
               }`}
             >
               History
@@ -91,53 +96,52 @@ export default function Bookings() {
           </div>
         </div>
 
-        {/* LIST */}
+        {/* 🔥 BOOKING CARDS */}
         <div className="space-y-4">
           {filteredBookings.map((b) => (
             <div
               key={b.id}
-              className="bg-white rounded-2xl shadow-sm p-4 active:scale-[0.99] transition"
+              className="bg-white/90 backdrop-blur rounded-2xl shadow-md p-4 hover:shadow-lg hover:-translate-y-1 transition-all"
             >
-              {/* Doctor */}
+              {/* TOP */}
               <div className="flex items-center gap-4">
                 <img
                   src={b.image}
                   alt={b.doctor}
-                  className="w-14 h-14 rounded-full object-cover"
+                  className="w-14 h-14 rounded-full object-cover border"
                 />
 
                 <div className="flex-1">
                   <h3 className="font-semibold text-gray-800">{b.doctor}</h3>
-                  <p className="text-sky-600 text-sm">{b.speciality}</p>
+                  <p className="text-blue-600 text-sm">{b.speciality}</p>
                   <p className="text-gray-500 text-xs">{b.hospital}</p>
                 </div>
 
+                {/* STATUS */}
                 <span
-                  className={`px-3 py-1 text-xs rounded-full font-medium flex items-center gap-1 ${statusStyles(
-                    b.status,
-                  )}`}
+                  className={`px-3 py-1 text-xs rounded-full font-medium flex items-center gap-1 ${statusStyles[b.status]}`}
                 >
-                  <i className={`fa-solid ${statusIcon(b.status)}`}></i>
+                  <i className="fa-solid fa-circle text-[8px]"></i>
                   {b.status}
                 </span>
               </div>
 
-              {/* Date & Time */}
-              <div className="flex gap-3 mt-4 text-sm">
-                <div className="flex items-center gap-2 bg-sky-50 px-3 py-1 rounded-full text-gray-600">
+              {/* DATE & TIME */}
+              <div className="flex gap-3 mt-4 text-xs">
+                <div className="flex items-center gap-2 bg-sky-50 px-3 py-1 rounded-full">
                   <i className="fa-regular fa-calendar text-sky-500"></i>
                   {b.date}
                 </div>
 
-                <div className="flex items-center gap-2 bg-sky-50 px-3 py-1 rounded-full text-gray-600">
+                <div className="flex items-center gap-2 bg-sky-50 px-3 py-1 rounded-full">
                   <i className="fa-regular fa-clock text-sky-500"></i>
                   {b.time}
                 </div>
               </div>
 
-              {/* Actions */}
+              {/* ACTION */}
               {b.status === "upcoming" && (
-                <button className="mt-4 w-full py-2 rounded-full border border-red-400 text-red-500 font-medium hover:bg-red-50 transition">
+                <button className="mt-4 w-full py-2 rounded-xl bg-red-50 text-red-500 font-medium hover:bg-red-500 hover:text-white transition">
                   Cancel Appointment
                 </button>
               )}
@@ -147,7 +151,7 @@ export default function Bookings() {
 
         {/* EMPTY STATE */}
         {filteredBookings.length === 0 && (
-          <div className="bg-white rounded-2xl shadow-sm p-10 text-center mt-10">
+          <div className="bg-white rounded-2xl shadow p-10 text-center mt-10">
             <i className="fa-regular fa-calendar-xmark text-4xl text-sky-300 mb-3"></i>
             <p className="text-gray-500">No appointments found</p>
           </div>
